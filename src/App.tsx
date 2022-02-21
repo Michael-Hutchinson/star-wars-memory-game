@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 import { Wrapper } from 'App.styles';
+import Card from 'components/Card/Card';
 import React, { useState } from 'react';
 import { createBoard, ICardProps } from 'utils/setup';
 import { shuffleArray } from 'utils/utils';
@@ -9,10 +9,14 @@ const App = () => {
   const [gameWon, setGameWon] = useState(false);
   const [matchPairs, setMatchPairs] = useState(0);
   const [clickedCard, setClickedCard] = useState<undefined | ICardProps>(undefined);
+
+  const handleCardClick = () => {
+    console.log('click');
+  };
   return (
     <Wrapper>
       {cards.map((card) => (
-        <p key={card.id}>Card.id</p>
+        <Card key={card.id} card={card} callback={handleCardClick} />
       ))}
     </Wrapper>
   );
