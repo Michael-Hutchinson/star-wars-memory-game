@@ -31,6 +31,7 @@ const App = () => {
             : card,
         ),
       );
+      setClickedCard(undefined);
       return;
     }
 
@@ -43,6 +44,7 @@ const App = () => {
         ),
       );
     }, 1000);
+    setClickedCard(undefined);
   };
   return (
     <Wrapper>
