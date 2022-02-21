@@ -21,7 +21,7 @@ const cards: string[] = [card1, card2, card3, card4, card5, card6, card7, card8]
 
 export const createBoard = (): ICardProps[] =>
   [...cards, ...cards].map((card, i) => ({
-    id: `card$(i)`,
+    id: `card${i}`,
     flipped: false,
     backImage: cardBack,
     frontImage: card,
