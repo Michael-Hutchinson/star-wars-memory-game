@@ -10,8 +10,12 @@ const App = () => {
   const [matchPairs, setMatchPairs] = useState(0);
   const [clickedCard, setClickedCard] = useState<undefined | ICardProps>(undefined);
 
-  const handleCardClick = () => {
-    console.log('click');
+  const handleCardClick = (currentCard: ICardProps) => {
+    setCards((prev) =>
+      prev.map((card) =>
+        card.id === currentCard.id ? { ...card, flipped: true, clickable: false } : card,
+      ),
+    );
   };
   return (
     <Wrapper>
