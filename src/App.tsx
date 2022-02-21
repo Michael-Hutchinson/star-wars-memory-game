@@ -16,6 +16,33 @@ const App = () => {
         card.id === currentCard.id ? { ...card, flipped: true, clickable: false } : card,
       ),
     );
+
+    if (!clickedCard) {
+      setClickedCard({ ...currentCard });
+      return;
+    }
+
+    if (clickedCard.matchingCardId === currentCard.id) {
+      setMatchPairs((prev) => prev + 1);
+      setCards((prev) =>
+        prev.map((card) =>
+          card.id === clickedCard.id || card.id === currentCard.id
+            ? { ...card, clickable: false }
+            : card,
+        ),
+      );
+      return;
+    }
+
+    setTimeout(() => {
+      setCards((prev) =>
+        prev.map((card) =>
+          card.id === clickedCard.id || card.id === currentCard.id
+            ? { ...card, flipped: false, clickable: true }
+            : card,
+        ),
+      );
+    }, 1000);
   };
   return (
     <Wrapper>
