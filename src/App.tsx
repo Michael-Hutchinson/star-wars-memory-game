@@ -1,12 +1,19 @@
+/* eslint-disable no-unused-vars */
 import { Wrapper } from 'App.styles';
-import React from 'react';
-import { createBoard } from 'utils/setup';
+import React, { useState } from 'react';
+import { createBoard, ICardProps } from 'utils/setup';
+import { shuffleArray } from 'utils/utils';
 
 const App = () => {
-  console.log(createBoard());
+  const [cards, setCards] = useState<ICardProps[]>(shuffleArray(createBoard()));
+  const [gameWon, setGameWon] = useState(false);
+  const [matchPairs, setMatchPairs] = useState(0);
+  const [clickedCard, setClickedCard] = useState<undefined | ICardProps>(undefined);
   return (
     <Wrapper>
-      <p>Hello world</p>
+      {cards.map((card) => (
+        <p key={card.id}>Card.id</p>
+      ))}
     </Wrapper>
   );
 };
